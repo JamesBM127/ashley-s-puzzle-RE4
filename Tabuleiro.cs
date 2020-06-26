@@ -17,16 +17,19 @@ namespace game
             tamVer = tamVertical;
         }
 
-        public int[,] criarTabuleiro()
+        public string[,] criarTabuleiro()
         {
-            int[,] tabArray = new int[tamVer, tamHor];
+            string[,] tabArray = new string[tamVer, tamHor];
             Random random = new Random();
-            int maxValue = tamHor * tamVer;
             for (int i = 0; i < tamVer; i++) {
                 for (int j = 0; j < tamHor; j++) {
-                    int aux = random.Next(1, maxValue + 1);
+                    int aux = random.Next(1, (tamHor * tamVer));
                     if (ecxist(aux, tabArray) == false) {
-                        tabArray[i, j] = aux;
+                        tabArray[i, j] = aux.ToString();
+                    }
+                    else if(i == tamVer-1 && j == tamHor-1) {
+                        tabArray[tamVer-1, tamHor-1] = "  ";
+                        j++;
                     }
                     else {
                         j--;
@@ -36,11 +39,11 @@ namespace game
             return tabArray;
         }
 
-        private bool ecxist(int numero, int[,]tabArray)
+        private bool ecxist(int numero, string[,]tabArray)
         {
             for(int i = 0; i < tamVer; i++) {
                 for(int j = 0; j < tamHor; j++) {
-                    if(tabArray[i,j] == numero) {
+                    if(tabArray[i,j] == numero.ToString()) {
                         return true;
                     }
                 }

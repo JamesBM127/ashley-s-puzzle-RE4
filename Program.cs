@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace game
 {
@@ -20,7 +21,7 @@ namespace game
             } while (tamHorizontal * tamVertical >= 100);
 
             Tabuleiro tabObj = new Tabuleiro(tamHorizontal, tamVertical); //Criar o OBJ
-            int[,] tabuleiro = tabObj.criarTabuleiro();
+            string[,] tabuleiro = tabObj.criarTabuleiro();
 
             
         }
@@ -30,15 +31,15 @@ namespace game
 
 /*
 for (int i = 0; i < tamVertical; i++) {
-    for (int j = 0; j < tamHorizontal; j++) {
-        if (tabuleiro[i, j] < 10) {
-            Console.Write("  " + tabuleiro[i, j] + " ");
-        }
-        else {
-            Console.Write(" " + tabuleiro[i, j] + " ");
-        }
-    }
-    Console.WriteLine();
-}
+                for (int j = 0; j < tamHorizontal; j++) {
+                    if (tabuleiro[i, j].Length == 1) {
+                        Console.Write($"[0{tabuleiro[i,j]}]");
+                    }
+                    else {
+                        Console.Write($"[{tabuleiro[i,j]}]");
+                    }
+                }
+                Console.WriteLine();
+            }
 
 */
