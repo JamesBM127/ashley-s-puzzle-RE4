@@ -8,7 +8,8 @@ namespace game
     {
         static void Main()
         {
-            int tamHorizontal, tamVertical;
+            int tamLinhas = 3, tamColunas = 3;
+            /*NÃO APAGAR ISSO, LER ANTES DE TENTAR APAGAR;
             do {
                 Console.WriteLine("TAMANHO DO TABULEIRO");
                 Console.Write("Horizontalmente: ");
@@ -19,11 +20,23 @@ namespace game
                     Console.WriteLine("Tamanho máximo ultrapassado");
                 }
             } while (tamHorizontal * tamVertical >= 100);
-
+            
             Tabuleiro tabObj = new Tabuleiro(tamHorizontal, tamVertical); //Criar o OBJ
-            string[,] tabuleiro = tabObj.criarTabuleiro();
+            tabObj.tabuleiro(); //Aqui é pra criar o tabuleiro;
+            Movimentos movObj = new Movimentos();
+            */
+
+            Movimentos movimentos = new Movimentos(tamLinhas, tamColunas);
+            movimentos.criarTabuleiro();
+            
+            while (true) {
+                Console.Clear();
+                movimentos.mostrarTabuleiro();
+                movimentos.movimentacaoPlayer();
+            }
 
             
+
         }
     }
 }
@@ -31,15 +44,15 @@ namespace game
 
 /*
 for (int i = 0; i < tamVertical; i++) {
-                for (int j = 0; j < tamHorizontal; j++) {
-                    if (tabuleiro[i, j].Length == 1) {
-                        Console.Write($"[0{tabuleiro[i,j]}]");
-                    }
-                    else {
-                        Console.Write($"[{tabuleiro[i,j]}]");
-                    }
-                }
-                Console.WriteLine();
-            }
+    for (int j = 0; j < tamHorizontal; j++) {
+        if (tabuleiro[i, j].Length == 1) {
+            Console.Write($"[0{tabuleiro[i,j]}]");
+        }
+        else {
+            Console.Write($"[{tabuleiro[i,j]}]");
+        }
+    }
+    Console.WriteLine();
+}
 
 */

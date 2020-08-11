@@ -1,34 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Linq;
 
 namespace game
 {
     class Tabuleiro
     {
-        public int tamHor;
-        public int tamVer;
+        protected int tamColunas;
+        protected int tamLinhas;
+        private bool tabuleioJaExiste = false;
+        public string[,] tabuleiroCompleto;
+        public bool[,] posicaoJogador;
 
         public Tabuleiro() { }
-        public Tabuleiro(int tamHorizontal, int tamVertical)
+
+        protected void construtorTabuleiro(int tamLinhas, int tamColunas)
         {
-            tamHor = tamHorizontal;
-            tamVer = tamVertical;
+            this.tamLinhas = tamLinhas;
+            this.tamColunas = tamColunas;
         }
 
-        public string[,] criarTabuleiro()
+        protected string[,] criarNumerosTabuleiro()
         {
-            string[,] tabArray = new string[tamVer, tamHor];
+            string[,] tabArray = new string[tamLinhas, tamColunas];
             Random random = new Random();
-            for (int i = 0; i < tamVer; i++) {
-                for (int j = 0; j < tamHor; j++) {
-                    int aux = random.Next(1, (tamHor * tamVer));
+            for (int i = 0; i < tamLinhas; i++) {
+                for (int j = 0; j < tamColunas; j++) {
+                    int aux = random.Next(1, (tamColunas * tamLinhas));
                     if (ecxist(aux, tabArray) == false) {
                         tabArray[i, j] = aux.ToString();
+                        posicaoJogador[i, j] = false;
                     }
-                    else if(i == tamVer-1 && j == tamHor-1) {
-                        tabArray[tamVer-1, tamHor-1] = "  ";
+                    else if(i == tamLinhas-1 && j == tamColunas-1) {
+                        tabArray[tamLinhas-1, tamColunas-1] = "  ";
+                        posicaoJogador[i, j] = true;
                         j++;
                     }
                     else {
@@ -39,16 +44,63 @@ namespace game
             return tabArray;
         }
 
+        //Isso verifica se o número já existe no tabuleiro;
         private bool ecxist(int numero, string[,]tabArray)
         {
-            for(int i = 0; i < tamVer; i++) {
-                for(int j = 0; j < tamHor; j++) {
+            for(int i = 0; i < tamLinhas; i++) {
+                for(int j = 0; j < tamColunas; j++) {
                     if(tabArray[i,j] == numero.ToString()) {
-                        return true;
+                        return true;//Se retorna True, então o numero ja existe no tabuleiro;
                     }
                 }
             }
-            return false;
+            return false;//Se retorna False, o número não existe e é adicionado ao tabuleiro;
+        }
+
+        public void criarTabuleiro()
+        {
+            string[,] tabArray = new string[tamLinhas, tamColunas];
+            if (tabuleioJaExiste == false) {
+                posicaoJogador = new bool[tamLinhas, tamColunas];
+                tabArray = criarNumerosTabuleiro();
+                tabuleioJaExiste = true;
+            }
+            tabuleiroCompleto = tabArray;
+        }
+
+        public void mostrarTabuleiro()
+        {
+            for (int i = 0; i < tamLinhas; i++) {
+                for (int j = 0; j < tamColunas; j++) {
+                    if (posicaoJogador[i, j] == false) {
+                        if (tabuleiroCompleto[i, j].Length == 1) {
+                            Console.Write($" 0{tabuleiroCompleto[i, j]} ");
+                        }
+                        else {
+                            Console.Write($" {tabuleiroCompleto[i, j]} ");
+                        }
+                    }
+                    else {
+                        if (tabuleiroCompleto[i, j].Length == 1) {
+                            Console.Write($"[0{tabuleiroCompleto[i, j]}]");
+                        }
+                        else {
+                            Console.Write($"[{tabuleiroCompleto[i, j]}]");
+                        }
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
+        public void mostrarTabuleiroBool()
+        {
+            for (int i = 0; i < tamLinhas; i++) {
+                for (int j = 0; j < tamColunas; j++) {
+                    Console.Write("{0} ", posicaoJogador[i,j]);
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
