@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace game
 {
@@ -8,31 +9,38 @@ namespace game
     {
         static void Main()
         {
-            int tamLinhas = 3, tamColunas = 3;
-            /*NÃO APAGAR ISSO, LER ANTES DE TENTAR APAGAR;
+            int tamLinhas = 5, tamColunas = 5;
+            /*
+            //NÃO APAGAR ISSO, LER ANTES DE TENTAR APAGAR;
+            int tamLinhas, tamColunas;
             do {
                 Console.WriteLine("TAMANHO DO TABULEIRO");
-                Console.Write("Horizontalmente: ");
-                tamHorizontal = int.Parse(Console.ReadLine());
-                Console.Write("Verticalmente: ");
-                tamVertical = int.Parse(Console.ReadLine());
-                if(tamHorizontal * tamVertical >= 100) {
+                Console.Write("LINHAS: ");
+                tamLinhas = int.Parse(Console.ReadLine());
+                Console.Write("COLUNAS: ");
+                tamColunas = int.Parse(Console.ReadLine());
+                if(tamLinhas * tamColunas >= 100) {
                     Console.WriteLine("Tamanho máximo ultrapassado");
                 }
-            } while (tamHorizontal * tamVertical >= 100);
-            
-            Tabuleiro tabObj = new Tabuleiro(tamHorizontal, tamVertical); //Criar o OBJ
-            tabObj.tabuleiro(); //Aqui é pra criar o tabuleiro;
-            Movimentos movObj = new Movimentos();
+            } while (tamLinhas * tamColunas >= 100);
             */
-
             Movimentos movimentos = new Movimentos(tamLinhas, tamColunas);
             movimentos.criarTabuleiro();
             
+            ConsoleKeyInfo escolhaMovimento;
+
             while (true) {
                 Console.Clear();
                 movimentos.mostrarTabuleiro();
-                movimentos.movimentacaoPlayer();
+                escolhaMovimento = Console.ReadKey();
+                switch (escolhaMovimento.Key) {
+                    case ConsoleKey.Spacebar:
+                        movimentos.mudarPosicao();
+                        break;
+                    default:
+                        movimentos.movimentacaoPlayer(escolhaMovimento.Key);
+                        break;
+                }
             }
 
             
@@ -43,8 +51,8 @@ namespace game
 
 
 /*
-for (int i = 0; i < tamVertical; i++) {
-    for (int j = 0; j < tamHorizontal; j++) {
+for (int i = 0; i < tamColunas; i++) {
+    for (int j = 0; j < tamLinhas; j++) {
         if (tabuleiro[i, j].Length == 1) {
             Console.Write($"[0{tabuleiro[i,j]}]");
         }

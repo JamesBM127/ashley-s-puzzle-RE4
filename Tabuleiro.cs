@@ -32,8 +32,9 @@ namespace game
                         posicaoJogador[i, j] = false;
                     }
                     else if(i == tamLinhas-1 && j == tamColunas-1) {
-                        tabArray[tamLinhas-1, tamColunas-1] = "  ";
-                        posicaoJogador[i, j] = true;
+                        tabArray[tamLinhas-1, tamColunas-1] = "99";
+                        tabArray[2,2] = "  ";
+                        posicaoJogador[2,2] = true;
                         j++;
                     }
                     else {
