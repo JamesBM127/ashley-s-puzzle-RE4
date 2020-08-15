@@ -12,9 +12,8 @@ namespace game
 
         public void movimentacaoPlayer(ConsoleKey escolhaMovimento)
         {
-            bool movimentoValido = false;
+            bool movimentoValido = true;
             switch (escolhaMovimento) {
-
                 case ConsoleKey.RightArrow:
                     movimentoValido = verificarMovimento(escolhaMovimento);
                     if(movimentoValido) movimentoValido = verificarMovimentoPerto(escolhaMovimento);
@@ -150,7 +149,7 @@ namespace game
                     }
                 }
             }
-                    return true;
+            return true;
         }
     }
 }

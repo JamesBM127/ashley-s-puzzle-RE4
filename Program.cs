@@ -9,8 +9,8 @@ namespace game
     {
         static void Main()
         {
-            int tamLinhas = 5, tamColunas = 5;
-            /*
+            //int tamLinhas = 2, tamColunas = 2;
+            
             //NÃO APAGAR ISSO, LER ANTES DE TENTAR APAGAR;
             int tamLinhas, tamColunas;
             do {
@@ -23,7 +23,7 @@ namespace game
                     Console.WriteLine("Tamanho máximo ultrapassado");
                 }
             } while (tamLinhas * tamColunas >= 100);
-            */
+            
             Movimentos movimentos = new Movimentos(tamLinhas, tamColunas);
             movimentos.criarTabuleiro();
             
@@ -48,19 +48,3 @@ namespace game
         }
     }
 }
-
-
-/*
-for (int i = 0; i < tamColunas; i++) {
-    for (int j = 0; j < tamLinhas; j++) {
-        if (tabuleiro[i, j].Length == 1) {
-            Console.Write($"[0{tabuleiro[i,j]}]");
-        }
-        else {
-            Console.Write($"[{tabuleiro[i,j]}]");
-        }
-    }
-    Console.WriteLine();
-}
-
-*/

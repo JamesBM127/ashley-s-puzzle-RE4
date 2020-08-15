@@ -20,7 +20,7 @@ namespace game
             this.tamColunas = tamColunas;
         }
 
-        protected string[,] criarNumerosTabuleiro()
+        private string[,] criarNumerosTabuleiro()
         {
             string[,] tabArray = new string[tamLinhas, tamColunas];
             Random random = new Random();
@@ -32,10 +32,8 @@ namespace game
                         posicaoJogador[i, j] = false;
                     }
                     else if(i == tamLinhas-1 && j == tamColunas-1) {
-                        tabArray[tamLinhas-1, tamColunas-1] = "99";
-                        tabArray[2,2] = "  ";
-                        posicaoJogador[2,2] = true;
-                        j++;
+                        tabArray[tamLinhas-1, tamColunas-1] = "  ";
+                        posicaoJogador[tamLinhas - 1, tamColunas - 1] = true;
                     }
                     else {
                         j--;
