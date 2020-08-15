@@ -28,8 +28,9 @@ namespace game
             movimentos.criarTabuleiro();
             
             ConsoleKeyInfo escolhaMovimento;
+            bool vitoria = false;
 
-            while (true) {
+            while (!vitoria) {
                 Console.Clear();
                 movimentos.mostrarTabuleiro();
                 escolhaMovimento = Console.ReadKey();
@@ -41,10 +42,10 @@ namespace game
                         movimentos.movimentacaoPlayer(escolhaMovimento.Key);
                         break;
                 }
+                vitoria = movimentos.Win();
             }
 
-            
-
+            Console.WriteLine("Parabens, você ganhou");
         }
     }
 }

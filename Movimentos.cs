@@ -12,7 +12,7 @@ namespace game
 
         public void movimentacaoPlayer(ConsoleKey escolhaMovimento)
         {
-            bool movimentoValido = true;
+            bool movimentoValido;// = true;
             switch (escolhaMovimento) {
                 case ConsoleKey.RightArrow:
                     movimentoValido = verificarMovimento(escolhaMovimento);

@@ -16,7 +16,7 @@ namespace game
                     }
                     else if(posicaoJogador[i,j]){
                         //ij[0] = i;     ij[1] = j;
-                        short[] ij = new short[2];
+                        short[] ij;
                         ij = Ij();
                         aux = tabuleiroCompleto[i, j];
                         tabuleiroCompleto[i, j] = "  ";

@@ -9,8 +9,8 @@ namespace game
         protected int tamColunas;
         protected int tamLinhas;
         private bool tabuleioJaExiste = false;
-        public string[,] tabuleiroCompleto;
-        public bool[,] posicaoJogador;
+        protected string[,] tabuleiroCompleto;
+        protected bool[,] posicaoJogador;
 
         public Tabuleiro() { }
 
@@ -24,12 +24,14 @@ namespace game
         {
             string[,] tabArray = new string[tamLinhas, tamColunas];
             Random random = new Random();
+            byte contador = 1;
             for (int i = 0; i < tamLinhas; i++) {
                 for (int j = 0; j < tamColunas; j++) {
                     int aux = random.Next(1, (tamColunas * tamLinhas));
                     if (ecxist(aux, tabArray) == false) {
                         tabArray[i, j] = aux.ToString();
                         posicaoJogador[i, j] = false;
+                        contador++;
                     }
                     else if(i == tamLinhas-1 && j == tamColunas-1) {
                         tabArray[tamLinhas-1, tamColunas-1] = "  ";
@@ -92,14 +94,17 @@ namespace game
             }
         }
 
-        public void mostrarTabuleiroBool()
+        public bool Win()
         {
-            for (int i = 0; i < tamLinhas; i++) {
-                for (int j = 0; j < tamColunas; j++) {
-                    Console.Write("{0} ", posicaoJogador[i,j]);
+            int contador = 1;
+            for(int i = 0; i < tamLinhas; i++) {
+                for(int j = 0; j < tamColunas; j++) {
+                    if(contador == tamLinhas * tamColunas) return true;
+                    if(tabuleiroCompleto[i, j] != contador.ToString()) return false;
+                    contador++;
                 }
-                Console.WriteLine();
             }
+            return true;
         }
     }
 }
