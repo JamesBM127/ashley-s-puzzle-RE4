@@ -82,12 +82,16 @@ namespace game
                         }
                     }
                     else {
+                        Console.BackgroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.Black;
                         if (tabuleiroCompleto[i, j].Length == 1) {
-                            Console.Write($"[0{tabuleiroCompleto[i, j]}]");
+                            Console.Write($" 0{tabuleiroCompleto[i, j]} ");
                         }
                         else {
-                            Console.Write($"[{tabuleiroCompleto[i, j]}]");
+                            Console.Write($" {tabuleiroCompleto[i, j]} ");
                         }
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                 }
                 Console.WriteLine();

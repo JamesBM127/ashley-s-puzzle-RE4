@@ -9,9 +9,10 @@ namespace game
     {
         static void Main()
         {
-            //int tamLinhas = 2, tamColunas = 2;
-            
-            //NÃO APAGAR ISSO, LER ANTES DE TENTAR APAGAR;
+            int tamLinhas = 4, tamColunas = 4;
+            /*
+            //NÃO APAGAR ISSO, LER ANTES DE TENTAR APAGAR, esse comentário faz o jogador escolher o tamanho do tabuleiro;
+            /*
             int tamLinhas, tamColunas;
             do {
                 Console.WriteLine("TAMANHO DO TABULEIRO");
@@ -23,12 +24,15 @@ namespace game
                     Console.WriteLine("Tamanho máximo ultrapassado");
                 }
             } while (tamLinhas * tamColunas >= 100);
-            
+            */
             Movimentos movimentos = new Movimentos(tamLinhas, tamColunas);
             movimentos.criarTabuleiro();
             
             ConsoleKeyInfo escolhaMovimento;
             bool vitoria = false;
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Gray;
 
             while (!vitoria) {
                 Console.Clear();
@@ -44,8 +48,10 @@ namespace game
                 }
                 vitoria = movimentos.Win();
             }
-
+            Console.Clear();
+            movimentos.mostrarTabuleiro();
             Console.WriteLine("Parabens, você ganhou");
+            Console.ReadKey();
         }
     }
 }

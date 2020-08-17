@@ -15,6 +15,7 @@ namespace game
             bool movimentoValido;// = true;
             switch (escolhaMovimento) {
                 case ConsoleKey.RightArrow:
+                case ConsoleKey.D:
                     movimentoValido = verificarMovimento(escolhaMovimento);
                     if(movimentoValido) movimentoValido = verificarMovimentoPerto(escolhaMovimento);
                     if(movimentoValido) {
@@ -31,6 +32,7 @@ namespace game
                     break;
 
                 case ConsoleKey.LeftArrow:
+                case ConsoleKey.A:
                     movimentoValido = verificarMovimento(escolhaMovimento);
                     if (movimentoValido) movimentoValido = verificarMovimentoPerto(escolhaMovimento);
                     if (movimentoValido) {
@@ -47,6 +49,7 @@ namespace game
                     break;
 
                 case ConsoleKey.UpArrow:
+                case ConsoleKey.W:
                     movimentoValido = verificarMovimento(escolhaMovimento);
                     if (movimentoValido) movimentoValido = verificarMovimentoPerto(escolhaMovimento);
                     if (movimentoValido) {
@@ -63,6 +66,7 @@ namespace game
                     break;
 
                 case ConsoleKey.DownArrow:
+                case ConsoleKey.S:
                     movimentoValido = verificarMovimento(escolhaMovimento);
                     if (movimentoValido) movimentoValido = verificarMovimentoPerto(escolhaMovimento);
                     if (movimentoValido) {
